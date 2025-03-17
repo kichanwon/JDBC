@@ -1,0 +1,13 @@
+package edu.kh.jdbc;
+/*
+ * JDBC - Java DataBase Connectivity
+ * 
+ * Connecting Java-DB API
+ * 
+ */
+
+public class JDBC_EX1 {
+	public static void main(String[] args) {
+		
+	}
+}
