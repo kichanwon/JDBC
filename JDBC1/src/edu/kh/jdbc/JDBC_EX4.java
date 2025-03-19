@@ -57,7 +57,7 @@ public class JDBC_EX4 {
 				
 				boolean flag = true;
 
-				while(rs.next()) {
+				while(rs.next()) {	// rs.next() <- 테이블이 반환되어야 실행됨 
 					flag=false;
 					
 					String empId = rs.getString("EMP_ID");

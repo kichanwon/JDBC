@@ -3,8 +3,6 @@ package edu.kh.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Scanner;
 
 /**
@@ -52,6 +50,7 @@ public class JDBC_EX6 {
 			psmt.setString(1, name);
 			psmt.setString(2, id);
 			psmt.setString(3, pw);
+			
 //			need to off auto-commit
 //			->to handle transaction
 			conn.setAutoCommit(false);
