@@ -10,7 +10,6 @@ import java.util.Properties;
 public class JDBCTemplate {
 	// 필드
 		private static Connection conn = null;
-		// -> static 메서드에서 사용 가능한 필드로 static 필드 선언
 
 		// 메서드
 		/**
@@ -22,27 +21,16 @@ public class JDBCTemplate {
 
 			try {
 
-				// 이전에 참조하던 Connection 객체가 존재하고
-				// 아직 close 된 상태가 아니라면
-				// 새로 만들지 않고 기존 Connection 반환
 				if (conn != null && !conn.isClosed()) {
 					return conn;
 				}
 
-				// 1. Properties 객체 생성
-				// Properties.storeToXML() -> xml 파일 만들기
-				// Properties.loadFromXML() -> xml 파일 읽어오기
 				Properties prop = new Properties();
 
-				// 2. Properties 메서드를 이용해서 driver.xml 파일 내용을 읽어오기
 				String filePath = "driver.xml";
-				// 프로젝트 폴더 바로 아래 driver.xml 파일 경로
 
 				prop.loadFromXML(new FileInputStream(filePath));
-				// prop에 저장된 값(driver.xml 에서 읽어온 값)을 이용해서
-				// Connection 객체 생성
 
-				// prop.getPropertry("key") : key가 일치하는 value 를 반환
 				Class.forName(prop.getProperty("driver"));
 				String url = prop.getProperty("url");
 				String userName = prop.getProperty("userName");
@@ -50,7 +38,6 @@ public class JDBCTemplate {
 
 				conn = DriverManager.getConnection(url, userName, password);
 
-				// 만들어진 Connection 에서 AutoCommit 끄기
 				conn.setAutoCommit(false);
 
 			} catch (Exception e) {
